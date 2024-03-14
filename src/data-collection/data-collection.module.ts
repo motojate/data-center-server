@@ -1,12 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Keyword, KeywordSchema } from 'src/database/schemas/keyword.schema';
 import { DataCollectionService } from './data-collection.service';
+import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: Keyword.name, schema: KeywordSchema }]),
-  ],
+  imports: [CqrsModule],
   providers: [DataCollectionService],
 })
 export class DataCollectionModule {}
