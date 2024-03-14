@@ -36,11 +36,14 @@ export class NaverSearchCommandHandler
           query: command.keyword,
         },
       });
+
       const { data } = response;
-      const formmatedData = data.items.map((data) => {
-        return removeHtmlTags(data.description);
+      data.items.forEach(async (data) => {
+        const title = removeHtmlTags(data.description);
+        const category = '개발';
+        const result = new this.keywordModel({ title, category });
+        await result.save();
       });
-      console.log(formmatedData);
     } catch (error) {
       console.log(error);
     }
