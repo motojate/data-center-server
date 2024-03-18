@@ -12,7 +12,7 @@ export class SchedulesService {
   })
   async handleCron() {
     const searchCommand = await this.commandBus.execute(
-      new NaverSearchCommand('개발자'),
+      new NaverSearchCommand(''),
     );
     searchCommand;
   }
