@@ -17,35 +17,34 @@ export class NaverSearchCommandHandler
 
   async execute(command: NaverSearchCommand): Promise<any> {
     try {
-      const response = await axios.get<{
-        lastBuildDate: Date;
-        total: number;
-        start: number;
-        display: number;
-        items: {
-          title: string;
-          description: string;
-        }[];
-      }>(process.env.NAVER_SEARCH_API_URL, {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Naver-Client-Id': process.env.NAVER_CLIENT_ID,
-          'X-Naver-Client-Secret': process.env.NAVER_CLIENT_SECRET,
-        },
-        params: {
-          query: command.keyword,
-        },
-      });
-
-      const { data } = response;
-      data.items.forEach(async (data) => {
-        const title = removeHtmlTags(data.description);
-        const category = '개발';
-        const result = new this.keywordModel({ title, category });
-        await result.save();
-      });
+      // const response = await axios.get<{
+      //   lastBuildDate: Date;
+      //   total: number;
+      //   start: number;
+      //   display: number;
+      //   items: {
+      //     title: string;
+      //     description: string;
+      //   }[];
+      // }>(process.env.NAVER_SEARCH_API_URL, {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'X-Naver-Client-Id': process.env.NAVER_CLIENT_ID,
+      //     'X-Naver-Client-Secret': process.env.NAVER_CLIENT_SECRET,
+      //   },
+      //   params: {
+      //     query: command.keyword,
+      //   },
+      // });
+      // const { data } = response;
+      // data.items.forEach(async (data) => {
+      //   const title = removeHtmlTags(data.description);
+      //   const category = '개발';
+      //   const result = new this.keywordModel({ title, category });
+      //   await result.save();
+      // });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 }
