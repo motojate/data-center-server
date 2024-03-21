@@ -12,19 +12,15 @@ export class SchedulesService {
     name: 'naverSearch',
   })
   async handleNaverSearchCron() {
-    const searchCommand = await this.commandBus.execute(
-      new NaverSearchCommand(''),
-    );
-    searchCommand;
+    // TODO 작동 시 무작위 키워드 생성
+    await this.commandBus.execute(new NaverSearchCommand(''));
   }
 
   @Cron(CronExpression.EVERY_MINUTE, {
     name: 'kakaoSearch',
   })
   async handleKakaoSearchCron() {
-    const searchCommand = await this.commandBus.execute(
-      new KakaoSearchCommand('개발자'),
-    );
-    searchCommand;
+    // TODO 작동 시 무작위 키워드 생성
+    await this.commandBus.execute(new KakaoSearchCommand('개발자'));
   }
 }
