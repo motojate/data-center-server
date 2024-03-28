@@ -18,3 +18,8 @@
 ```
 
 # Project Architecture
+
+프레임워크 : NestJS
+언어 : 타입스크립트
+DB : mongoDB
+ORM : mongoose
