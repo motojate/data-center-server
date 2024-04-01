@@ -23,6 +23,7 @@ export class NaverBlogCrawlCommandHandler
   async execute(command: NaverBlogCrawlCommand): Promise<any> {
     const data = await this.getDateByCrawling(command.keyword);
 
-    Number();
+    // TODO save
+    console.log(data);
   }
 }
